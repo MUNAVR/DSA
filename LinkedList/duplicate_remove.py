@@ -10,6 +10,7 @@ class SinglyLL:
     def __init__(self):
         self.head = None
         self.tail = None
+
     def addNode(self,key):
         newNode=Node(key)
         if self.head is None:
@@ -75,6 +76,8 @@ class Singlll:
 
     def addNode(self,data):
         new_node=Node(data)
-        self.tail.ref=new_node
-        self.tail=new_node
-
+        if self.head is None:
+            self.head=new_node
+        else:
+            self.tail.ref=new_node
+            
