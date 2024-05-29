@@ -72,7 +72,6 @@ class HashTable:
 		except KeyError: 
 			return False
 
-
 # Driver code 
 if __name__ == '__main__': 
 

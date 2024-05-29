@@ -5,6 +5,8 @@ stack.append(30)
 print(stack)
 stack.pop()
 print(stack)
+j=len(stack)-1
+print(stack[j])
 
 if len(stack) == 0:
     print("stack is empty")

@@ -1,40 +1,55 @@
+def find_pivot(list,first,last):
+    pivot=list[first]
+    left=first+1
+    right=last
+    while True:
+        while left<=right and list[left] <= pivot:
+            left+=1
+        while left<=right and list[right] >= pivot :
+            right-=1
+        if right<left:
+            break
+        else:
+            list[left],list[right]=list[right],list[left]
+    list[first],list[right]=list[right],list[first]
+    return right
 
-def partition(array, low, high):
-	pivot = array[high]
-	i = low - 1
-	for j in range(low, high):
-		if array[j] <= pivot:
-
-			i = i + 1
-			(array[i], array[j]) = (array[j], array[i])
-
-	(array[i + 1], array[high]) = (array[high], array[i + 1])
-
-	return i + 1
-
-
-# def quickSort(array, low, high):
-# 	if low < high:
-
-# 		# Find pivot element such that
-# 		# element smaller than pivot are on the left
-# 		# element greater than pivot are on the right
-# 		pi = partition(array, low, high)
-
-# 		# Recursive call on the left of pivot
-# 		quickSort(array, low, pi - 1)
-
-# 		# Recursive call on the right of pivot
-# 		quickSort(array, pi + 1, high)
+def quicksort(list, first, last):
+    if first < last:
+        p = find_pivot(list, first, last)
+        quicksort(list, first, p-1)
+        quicksort(list, p + 1,last)
+            
+# list=[2,4,3,4,5,6,7,4,3]
+# n=len(list)-1
+# quicksort(list,0,n)
+# print(list)
 
 
-data = [1, 7, 4, 1, 10, 9, -2]
-print("Unsorted Array")
-print(data)
 
-size = len(data)
+def find_place(arr,first,last):
+    pivot=arr[first]
+    left=first+1
+    right=last
+    while True:
+        while left <= right and arr[left]<=pivot:
+            left+=1
+        while left <=right and arr[right]>=pivot:
+            right-=1
+        if right<left:
+            break
+        else:
+            arr[left],arr[right]=arr[right],arr[left]
+    arr[first],arr[right]=arr[right],arr[first]
+    return right
 
-partition(data, 0, size - 1)
+def quicksort1(arr,first,last):
+    if first < last:
+        p=find_place(arr,first,last)
+        quicksort(arr,first,p-1)
+        quicksort(arr,p+1,last)
 
-print('Sorted Array in Ascending Order:')
-print(data)
+list=[2,4,3,4,5,6,7,4,3]
+n=len(list)-1
+quicksort1(list,0,n)
+print(list)

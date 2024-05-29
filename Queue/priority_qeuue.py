@@ -11,7 +11,7 @@ print(q)
 
 
 import queue
-q=queue.Queue()
+q=queue.PriorityQueue()
 q.put(10)
 q.put(20)
 q.put(30)
